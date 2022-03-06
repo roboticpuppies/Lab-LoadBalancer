@@ -11,3 +11,9 @@ graph TD;
 ## Goal
 
 Mencoba load balancing wordpress. Load test dengan k6.
+
+## Setup
+
+```
+vagrant up
+```
