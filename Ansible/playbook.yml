@@ -3,3 +3,15 @@
   become: true
   roles:
     - geerlingguy.docker
+  
+  post_tasks:
+    - name: Add user to Docker group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
+    - name: Start services
+      command:
+        cmd: docker-compose -f {{ compose_file }} up -d
+        chdir: /home/vagrant/Docker

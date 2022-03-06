@@ -1,8 +1,16 @@
 Vagrant.configure("2") do |config|
+  config.vm.provision "file", source: "Docker", destination: "$HOME/"
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "Ansible/playbook.yml"
+    ansible.groups = {
+      "wp" => ["wp1", "wp2"],
+      "lb" => ["nginx"],
+      "mysql" => ["db"],
+      "wp:vars" => {"compose_file" => "docker-compose-wp.yml"},
+      "lb:vars" => {"compose_file" => "docker-compose-nginx.yml"},
+      "mysql:vars" => {"compose_file" => "docker-compose-db.yml"},
+    }
   end
-  config.vm.provision "file", source: "Docker", destination: "$HOME/"
 
   config.vm.define "wp1" do |wp1|
     wp1.vm.network "public_network", ip: "172.16.1.100"
