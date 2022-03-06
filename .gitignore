@@ -103,4 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-Ansible/roles
+Ansible/roles/*
+!*Ansible/roles/requirements.yml
+
