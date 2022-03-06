@@ -1,0 +1,15 @@
+version: '3'
+services:
+  wp:
+    image: wordpress:5.9.1-php8.0-apache
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: 172.16.1.103
+      WORDPRESS_DB_USER: db_user
+      WORDPRESS_DB_PASSWORD: Testing123!@#
+      WORDPRESS_DB_NAME: db_wp
+    volumes:
+      - wordpress:/var/www/html
+volumes:
+  wordpress:

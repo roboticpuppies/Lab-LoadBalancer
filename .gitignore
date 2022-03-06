@@ -106,3 +106,4 @@ dist
 Ansible/roles/*
 !*Ansible/roles/requirements.yml
 
+.vagrant
